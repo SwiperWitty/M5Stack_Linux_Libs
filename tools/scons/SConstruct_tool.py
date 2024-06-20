@@ -117,6 +117,29 @@ def check_component(component_name):
                 env.Fatal('Please manually download {} to {}.'.format(env['GIT_REPO_LISTS'][component_name]['url'], env['GIT_REPO_LISTS'][component_name]['path']))
 
 def CC_cmd_execute(cmd):
+    try:
+        import os
+        import tempfile
+        fd, path = tempfile.mkstemp()
+        env.ParseConfig('${{CC}} -v 2>&1 >> {}'.format(path))
+        out = fd.read()
+        print(out)
+
+        # version_r = parse.compile("gcc version {} {}")
+        # Target_r = parse.compile("Target: {}\n")
+        # with open(str(Path('build/config/gcc_version.txt')), 'r') as conf_file:
+        #     for line in conf_file.readlines():
+        #         version = version_r.parse(line)
+        #         if version:
+        #             env['CCVERSION'] = version[0]
+        #         Target = Target_r.parse(line)
+        #         if Target:
+        #             env['GCC_DUMPMACHINE'] = Target[0]
+    except:
+        env.Fatal("")
+
+
+
     import os
     import subprocess
     try:
