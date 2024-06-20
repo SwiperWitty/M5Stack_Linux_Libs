@@ -265,7 +265,7 @@ def build_task_init():
 
 
     env.Append(CPPPATH=[BUILD_CONFIG_PATH])
-    # env['LINKCOM'] = '$LINK -o $TARGET $SOURCES $LINKFLAGS $__RPATH  $_LIBDIRFLAGS '
+    env['LINKCOM'] = '$LINK -o $TARGET $SOURCES $LINKFLAGS $__RPATH  $_LIBDIRFLAGS $_LIBFLAGS'
 
     if 'CONFIG_COMMPILE_DEBUG' not in os.environ:
         env['CCCOMSTR'] = "CC $SOURCES"
