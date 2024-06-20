@@ -175,9 +175,9 @@ def build_task_init():
                 Pobj = pattern.parse(line)
                 if Pobj:
                     key, value = Pobj.fixed
-                    if key == 'TOOLCHAIN_PREFIX' and value == '""' and 'CONFIG_TOOLCHAIN_PREFIX' in os.environ:
+                    if key == 'TOOLCHAIN_PREFIX' and 'CONFIG_TOOLCHAIN_PREFIX' in os.environ:
                         value = os.environ['CONFIG_TOOLCHAIN_PREFIX']
-                    if key == 'TOOLCHAIN_PATH' and value == '""' and 'CONFIG_TOOLCHAIN_PATH' in os.environ:
+                    if key == 'TOOLCHAIN_PATH' and 'CONFIG_TOOLCHAIN_PATH' in os.environ:
                         value = os.environ['CONFIG_TOOLCHAIN_PATH']
                     os.environ['CONFIG_' + key] = value.strip('"')
     except:
